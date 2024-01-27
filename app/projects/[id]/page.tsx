@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
+
 const UserFeedbackTab: React.FC = () => {
   // Dummy data for the feedback items
-  const feedbackData: FeedbackItem[] = [
+  const feedbackData: any[] = [
     {
       username: "HELEN23",
       comment: "Amazing architecture and detail.",
@@ -55,7 +57,7 @@ const ProjectDetails: React.FC = () => {
           className={`flex-1 ${activeTab === "feedback" ? "bg-white" : ""}`}
           onClick={() => setActiveTab("feedback")}
         >
-          USERS' FEEDBACK
+          USERS FEEDBACK
         </button>
         <button
           className={`flex-1 ${activeTab === "generalInfo" ? "bg-white" : ""}`}
@@ -68,17 +70,17 @@ const ProjectDetails: React.FC = () => {
       {/* Image Gallery */}
       <div className="flex flex-wrap justify-center p-4">
         {/* Placeholder for images, replace with actual images */}
-        <img
+        <Image
           className="w-1/3 p-1"
           src="/path-to-image1.jpg"
           alt="Project Image"
         />
-        <img
+        <Image
           className="w-1/3 p-1"
           src="/path-to-image2.jpg"
           alt="Project Image"
         />
-        <img
+        <Image
           className="w-1/3 p-1"
           src="/path-to-image3.jpg"
           alt="Project Image"

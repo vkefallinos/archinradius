@@ -1,11 +1,12 @@
 import React from "react";
+import Image from "next/image";
 
 const App: React.FC = () => {
   return (
     <div className="flex flex-col h-screen">
       <div className="flex-grow relative">
         {/* Background image */}
-        <img
+        <Image
           src="/background-home.jpeg" // Replace with your actual image path
           alt="Background"
           className="absolute inset-0 w-full h-full object-cover"

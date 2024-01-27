@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const UserProfile: React.FC = () => {
   return (
@@ -6,12 +7,12 @@ const UserProfile: React.FC = () => {
       {/* Header with the user's name and profile picture */}
       <div className="relative text-center p-4 bg-black text-white">
         <h1 className="text-xl">Danai Kap</h1>
-        <img
+        <Image
           src="/path-to-profile-picture.jpg" // Replace with the actual path to the profile picture
           alt="Profile"
           className="w-32 h-32 rounded-full absolute left-4 top-4 object-cover"
         />
-        <p className="italic mt-2">"getting to know our cities..."</p>
+        <p className="italic mt-2">&quot;getting to know our cities...&quot;</p>
       </div>
       <div className="flex flex-row h-full flex-grow">
         {/* Profile Stats */}
@@ -38,7 +39,7 @@ const UserProfile: React.FC = () => {
                 <p className="text-xs text-gray-600">3/12/2015</p>
               </div>
               <div>
-                <p>Saved a project in "INTERIOR" folder</p>
+                <p>Saved a project in &quot;INTERIOR&quot; folder</p>
                 <p className="text-xs text-gray-600">18/2/2016</p>
               </div>
             </div>
@@ -60,7 +61,7 @@ const UserProfile: React.FC = () => {
                 <p className="text-xs text-gray-600">3/12/2015</p>
               </div>
               <div>
-                <p>Saved a project in "INTERIOR" folder</p>
+                <p>Saved a project in &quot;INTERIOR&quot; folder</p>
                 <p className="text-xs text-gray-600">18/2/2016</p>
               </div>
             </div>
@@ -82,7 +83,7 @@ const UserProfile: React.FC = () => {
                 <p className="text-xs text-gray-600">3/12/2015</p>
               </div>
               <div>
-                <p>Saved a project in "INTERIOR" folder</p>
+                <p>Saved a project in &quot;INTERIOR&quot; folder</p>
                 <p className="text-xs text-gray-600">18/2/2016</p>
               </div>
             </div>

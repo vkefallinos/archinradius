@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface MenuItemProps {
   text: string;
   href?: string;
@@ -18,7 +20,7 @@ const Home: React.FC = () => {
   return (
     <div className="relative w-full h-full">
       {/* Background image */}
-      <img
+      <Image
         src="/background-home.jpeg" // Replace with your actual image path
         alt="Background"
         className="w-50 h-full object-cover"
