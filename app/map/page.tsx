@@ -2,6 +2,7 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker, Popup, Circle } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+export const dynamic = "force-dynamic";
 
 const MapComponent: React.FC = () => {
   // Define the center of the map
