@@ -8,7 +8,7 @@ const MapComponent: React.FC = () => {
   const center = { lat: 37.9838, lng: 23.7275 }; // Coordinates for Athens
 
   // Define the radius (in meters) for the circle overlay
-  const radius = 1000; // 1km radius
+  const radius: number = 1000; // 1km radius
 
   // Dummy data for markers, replace with actual data
   const markers = [
@@ -28,20 +28,11 @@ const MapComponent: React.FC = () => {
 
       {/* Map */}
       <div className="flex-grow relative">
-        <MapContainer
-          center={center}
-          zoom={13}
-          scrollWheelZoom={false}
-          style={{ height: "100%", width: "100%" }}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
+        <MapContainer>
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {/* Circle to represent the radius */}
           <Circle
             center={center}
-            radius={radius}
             pathOptions={{
               color: "yellow",
               fillColor: "yellow",
