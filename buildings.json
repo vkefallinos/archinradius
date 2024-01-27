@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Acropolis of Athens",
+    "description": "An ancient citadel located on a rocky outcrop above the city, containing the remains of several ancient buildings of great architectural and historic significance, the most famous being the Parthenon.",
+    "architect": "Iktinos and Kallikrates (Parthenon)",
+    "year_of_construction": "447-432 BC (Parthenon)",
+    "city": "Athens"
+  },
+  {
+    "name": "Parthenon",
+    "description": "A former temple on the Athenian Acropolis, Greece, dedicated to the goddess Athena, whom the people of Athens considered their patron.",
+    "architect": "Iktinos and Kallikrates",
+    "year_of_construction": "447-438 BC",
+    "city": "Athens"
+  },
+  {
+    "name": "New Acropolis Museum",
+    "description": "An archaeological museum focused on the findings of the archaeological site of the Acropolis of Athens, housing more than 4,250 objects.",
+    "architect": "Bernard Tschumi",
+    "year_of_construction": "2009",
+    "city": "Athens"
+  },
+  {
+    "name": "Syntagma Square",
+    "description": "The central square of Athens. The square is named after the Constitution that King Otto was obliged to grant after a popular and military uprising on 3 September 1843.",
+    "architect": "Unknown",
+    "year_of_construction": "1843",
+    "city": "Athens"
+  },
+  {
+    "name": "National Library of Greece",
+    "description": "The prestigious national library of Greece designed in a neoclassical style, part of the famous neoclassical trilogy of architectural landmarks.",
+    "architect": "Theophil Freiherr von Hansen",
+    "year_of_construction": "1888",
+    "city": "Athens"
+  },
+  {
+    "name": "Stavros Niarchos Foundation Cultural Center",
+    "description": "A complex in the bay of Faliro in Athens which includes new facilities for the National Library of Greece and the Greek National Opera.",
+    "architect": "Renzo Piano",
+    "year_of_construction": "2016",
+    "city": "Athens"
+  },
+  {
+    "name": "Athens Olympic Sports Complex",
+    "description": "A sports complex built for the 2004 Olympic Games, hosting a variety of impressive venues such as the Olympic Stadium.",
+    "architect": "Santiago Calatrava",
+    "year_of_construction": "2004",
+    "city": "Athens"
+  },
+  {
+    "name": "Technopolis (Gazi)",
+    "description": "An industrial museum and a major cultural venue of the city, housed in the old Athens gasworks, which was founded in 1857.",
+    "architect": "Unknown",
+    "year_of_construction": "1857",
+    "city": "Athens"
+  },
+  {
+    "name": "Megaron, The Athens Concert Hall",
+    "description": "A world-class concert hall known for its fine acoustics, hosting musical and theatrical performances as well as conferences.",
+    "architect": "Christophoros Nomikos",
+    "year_of_construction": "1991",
+    "city": "Athens"
+  },
+  {
+    "name": "Zappeion",
+    "description": "A building in the National Gardens of Athens in the heart of Athens, Greece. It is generally used for meetings and ceremonies, both official and private.",
+    "architect": "Theophil Freiherr von Hansen",
+    "year_of_construction": "1888",
+    "city": "Athens"
+  }
+]

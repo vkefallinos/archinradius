@@ -1,16 +1,12 @@
 interface MenuItemProps {
   text: string;
-  href?: string;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ text, ...props }) => (
+const MenuItem: React.FC<MenuItemProps> = ({ text }) => (
   <li className="mb-4 last:mb-0">
-    <a
-      className="text-white text-lg font-semibold tracking-wide uppercase focus:outline-none"
-      {...props}
-    >
+    <button className="text-white text-lg font-semibold tracking-wide uppercase focus:outline-none">
       {text}
-    </a>
+    </button>
   </li>
 );
 
@@ -28,7 +24,7 @@ const Home: React.FC = () => {
         <ul className="text-center">
           <MenuItem text="Guide Me" />
           <MenuItem text="Profile Connection" />
-          <MenuItem text="About The App" href="/about" />
+          <MenuItem text="About The App" />
         </ul>
       </div>
     </div>

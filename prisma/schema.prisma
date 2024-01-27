@@ -11,10 +11,268 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
-model users {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  image     String
-  createdAt DateTime @default(now())
+model User {
+  id                Int                    @id @default(autoincrement())
+  username          String                 @unique
+  email             String                 @unique
+  encryptedPassword String
+  profilePictureURL String?
+  bio               String?
+  dateJoined        DateTime               @default(now())
+  lastLogin         DateTime?
+  userSettings      UserSettings?
+  userStatistics    UserStatistics?
+  userRole          UserRole               @default(GENERAL)
+  projects          ArchitecturalProject[]
+  articles          Article[]
+  comments          Comment[]
+  likes             Like[]
+  saves             Save[]
+  folders           Folder[]
+  searchHistory     SearchHistory[]
+  notifications     Notification[]
+  auditLogs         AuditLog[]
+
+  userSettingsId   Int?
+  userStatisticsId Int?
+  TourBooking      TourBooking[]
+}
+
+model UserSettings {
+  id                      Int    @id @default(autoincrement())
+  user                    User   @relation(fields: [userId], references: [id])
+  notificationPreferences Json
+  radiusPreferences       Int
+  languagePreferences     String
+  privacySettings         Json
+
+  userId Int @unique // This ensures a one-to-one relationship
+}
+
+model UserStatistics {
+  id               Int  @id @default(autoincrement())
+  user             User @relation(fields: [userId], references: [id])
+  spotsVisited     Int  @default(0)
+  spotsAdded       Int  @default(0)
+  projectsUploaded Int  @default(0)
+  foldersCreated   Int  @default(0)
+
+  userId Int @unique // This ensures a one-to-one relationship
+}
+
+enum UserRole {
+  ADMIN
+  CONTRIBUTOR
+  GENERAL
+}
+
+model ArchitecturalProject {
+  id                    Int            @id @default(autoincrement())
+  projectName           String
+  architect             Architect      @relation(fields: [architectId], references: [id])
+  address               String
+  latitude              Float
+  longitude             Float
+  description           String
+  projectType           ProjectType
+  timeline              DateTime
+  images                ImageGallery[]
+  dateAdded             DateTime       @default(now())
+  addedByUser           User           @relation(fields: [addedByUserId], references: [id])
+  historicalInformation String?
+  relatedArticles       Article[]      @relation("RelatedProjects")
+
+  architectId   Int
+  addedByUserId Int
+  Comment       Comment[]
+  Like          Like[]
+  Save          Save[]
+  Folder        Folder?    @relation(fields: [folderId], references: [id])
+  folderId      Int?
+  Path          Path?      @relation(fields: [pathId], references: [id])
+  pathId        Int?
+  District      District?  @relation(fields: [districtId], references: [id])
+  districtId    Int?
+  Building      Building[]
+}
+
+model Architect {
+  id               Int                    @id @default(autoincrement())
+  name             String
+  biography        String?
+  notableProjects  ArchitecturalProject[]
+  historicalImpact String?
+  Building         Building[]
+}
+
+model ImageGallery {
+  id         Int                  @id @default(autoincrement())
+  project    ArchitecturalProject @relation(fields: [projectId], references: [id])
+  imageURL   String
+  caption    String?
+  uploadDate DateTime             @default(now())
+
+  projectId Int
+}
+
+enum ProjectType {
+  CULTURAL
+  PUBLIC
+  HOUSING
+  MONUMENT
+  NATURAL_BUILDING
+  TRADITIONAL
+  INDUSTRIAL
+}
+
+model Article {
+  id              Int                    @id @default(autoincrement())
+  title           String
+  content         String
+  author          User                   @relation(fields: [authorUserId], references: [id])
+  category        ArticleCategory
+  publicationDate DateTime               @default(now())
+  relatedProjects ArchitecturalProject[] @relation("RelatedProjects")
+  comments        Comment[]
+
+  authorUserId Int
+  Like         Like[]
+}
+
+model Comment {
+  id          Int                   @id @default(autoincrement())
+  content     String
+  author      User                  @relation(fields: [authorUserId], references: [id])
+  project     ArchitecturalProject? @relation(fields: [projectId], references: [id])
+  article     Article?              @relation(fields: [articleId], references: [id])
+  commentDate DateTime              @default(now())
+
+  authorUserId Int
+  projectId    Int?
+  articleId    Int?
+}
+
+model Like {
+  id        Int                   @id @default(autoincrement())
+  user      User                  @relation(fields: [userId], references: [id])
+  project   ArchitecturalProject? @relation(fields: [projectId], references: [id])
+  article   Article?              @relation(fields: [articleId], references: [id])
+  createdAt DateTime              @default(now())
+
+  userId    Int
+  projectId Int?
+  articleId Int?
+}
+
+model Save {
+  id        Int                   @id @default(autoincrement())
+  user      User                  @relation(fields: [userId], references: [id])
+  project   ArchitecturalProject? @relation(fields: [projectId], references: [id])
+  dateSaved DateTime              @default(now())
+
+  userId    Int
+  projectId Int?
+}
+
+enum ArticleCategory {
+  INTERIOR_DESIGN
+  ARCHITECTURE_NEWS
+  TECHNICAL_INNOVATION
+  EVENT_ANNOUNCEMENT
+  CASE_STUDY
+}
+
+model SearchHistory {
+  id               Int      @id @default(autoincrement())
+  user             User     @relation(fields: [userId], references: [id])
+  searchParameters Json // Stores a JSON object with all the search parameters
+  searchDate       DateTime @default(now())
+
+  userId Int
+}
+
+model Notification {
+  id       Int              @id @default(autoincrement())
+  user     User             @relation(fields: [userId], references: [id])
+  type     NotificationType
+  message  String
+  dateSent DateTime         @default(now())
+  isRead   Boolean          @default(false)
+
+  userId Int
+}
+
+enum NotificationType {
+  NEW_PROJECT_ALERT
+  COMMENT_REPLY
+  FOLLOWER_ACTIVITY
+  SYSTEM_UPDATE
+}
+
+model Folder {
+  id          Int                    @id @default(autoincrement())
+  user        User                   @relation(fields: [userId], references: [id])
+  folderName  String
+  createdDate DateTime               @default(now())
+  projects    ArchitecturalProject[]
+
+  userId Int
+}
+
+model TourBooking {
+  id               Int           @id @default(autoincrement())
+  user             User          @relation(fields: [userId], references: [id])
+  tourDate         DateTime
+  tourDetails      Json // Can include guideID, itinerary, location, etc.
+  paymentStatus    PaymentStatus
+  confirmationCode String
+
+  userId Int
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  REFUNDED
+  CANCELLED
+}
+
+model AuditLog {
+  id                Int      @id @default(autoincrement())
+  user              User     @relation(fields: [userId], references: [id])
+  actionPerformed   String
+  timestamp         DateTime @default(now())
+  ipAddress         String
+  deviceInformation Json // Contains device type, OS, browser info, etc.
+
+  userId Int
+}
+
+model Path {
+  id          Int                    @id @default(autoincrement())
+  name        String
+  description String?
+  projects    ArchitecturalProject[]
+}
+
+model District {
+  id       Int                    @id @default(autoincrement())
+  name     String
+  city     String
+  projects ArchitecturalProject[]
+}
+
+model Building {
+  id                     Int                   @id @default(autoincrement())
+  name                   String
+  address                String
+  latitude               Float
+  longitude              Float
+  architect              Architect?            @relation(fields: [architectId], references: [id])
+  constructionDate       DateTime?
+  renovationDate         DateTime?
+  description            String?
+  project                ArchitecturalProject? @relation(fields: [architecturalProjectId], references: [id])
+  architectId            Int?
+  architecturalProjectId Int?
 }
