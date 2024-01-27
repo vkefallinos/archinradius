@@ -26,7 +26,7 @@ async function main() {
   // Upsert architects
   const architects = await Promise.all([
     prisma.architect.upsert({
-      where: { name: "Dimitris Pikionis" },
+      where: { id: 2 },
       update: {},
       create: {
         name: "Dimitris Pikionis",
@@ -35,7 +35,7 @@ async function main() {
       },
     }),
     prisma.architect.upsert({
-      where: { name: "Artemis Zenetou" },
+      where: { id: 2 },
       update: {},
       create: {
         name: "Artemis Zenetou",
@@ -48,7 +48,7 @@ async function main() {
   // Upsert buildings
   const buildings = await Promise.all([
     prisma.building.upsert({
-      where: { name: "The Acropolis Museum" },
+      where: { id: 1 },
       update: {},
       create: {
         name: "The Acropolis Museum",
@@ -62,7 +62,7 @@ async function main() {
       },
     }),
     prisma.building.upsert({
-      where: { name: "The Benaki Museum" },
+      where: { id: 2 },
       update: {},
       create: {
         name: "The Benaki Museum",
@@ -81,7 +81,7 @@ async function main() {
   // Upsert architectural projects
   const projects = await Promise.all([
     prisma.architecturalProject.upsert({
-      where: { projectName: "The Acropolis Restoration" },
+      where: { id: 1 },
       update: {},
       create: {
         projectName: "The Acropolis Restoration",
@@ -97,7 +97,7 @@ async function main() {
       },
     }),
     prisma.architecturalProject.upsert({
-      where: { projectName: "New Athenian Cultural Center" },
+      where: { id: 2 },
       update: {},
       create: {
         projectName: "New Athenian Cultural Center",
