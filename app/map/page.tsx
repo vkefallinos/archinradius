@@ -28,24 +28,26 @@ const MapComponent: React.FC = () => {
 
       {/* Map */}
       <div className="flex-grow relative">
-        <MapContainer>
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          {/* Circle to represent the radius */}
-          <Circle
-            center={center}
-            pathOptions={{
-              color: "yellow",
-              fillColor: "yellow",
-              fillOpacity: 0.5,
-            }}
-          />
-          {/* Markers for locations */}
-          {markers.map((marker) => (
-            <Marker key={marker.id} position={marker.position}>
-              <Popup>{marker.name}</Popup>
-            </Marker>
-          ))}
-        </MapContainer>
+        {typeof window !== "undefined" && (
+          <MapContainer>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            {/* Circle to represent the radius */}
+            <Circle
+              center={center}
+              pathOptions={{
+                color: "yellow",
+                fillColor: "yellow",
+                fillOpacity: 0.5,
+              }}
+            />
+            {/* Markers for locations */}
+            {markers.map((marker) => (
+              <Marker key={marker.id} position={marker.position}>
+                <Popup>{marker.name}</Popup>
+              </Marker>
+            ))}
+          </MapContainer>
+        )}
       </div>
 
       {/* Footer */}
