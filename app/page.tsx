@@ -21,6 +21,8 @@ const Home: React.FC = () => {
     <div className="relative w-full h-full">
       {/* Background image */}
       <Image
+        height="200"
+        width="200"
         src="/background-home.jpeg" // Replace with your actual image path
         alt="Background"
         className="w-50 h-full object-cover"

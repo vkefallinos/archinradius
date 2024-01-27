@@ -71,16 +71,22 @@ const ProjectDetails: React.FC = () => {
       <div className="flex flex-wrap justify-center p-4">
         {/* Placeholder for images, replace with actual images */}
         <Image
+          height="200"
+          width="200"
           className="w-1/3 p-1"
           src="/path-to-image1.jpg"
           alt="Project Image"
         />
         <Image
+          height="200"
+          width="200"
           className="w-1/3 p-1"
           src="/path-to-image2.jpg"
           alt="Project Image"
         />
         <Image
+          height="200"
+          width="200"
           className="w-1/3 p-1"
           src="/path-to-image3.jpg"
           alt="Project Image"

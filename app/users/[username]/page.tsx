@@ -8,6 +8,8 @@ const UserProfile: React.FC = () => {
       <div className="relative text-center p-4 bg-black text-white">
         <h1 className="text-xl">Danai Kap</h1>
         <Image
+          height="200"
+          width="200"
           src="/path-to-profile-picture.jpg" // Replace with the actual path to the profile picture
           alt="Profile"
           className="w-32 h-32 rounded-full absolute left-4 top-4 object-cover"

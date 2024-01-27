@@ -7,6 +7,8 @@ const App: React.FC = () => {
       <div className="flex-grow relative">
         {/* Background image */}
         <Image
+          height="200"
+          width="200"
           src="/background-home.jpeg" // Replace with your actual image path
           alt="Background"
           className="absolute inset-0 w-full h-full object-cover"

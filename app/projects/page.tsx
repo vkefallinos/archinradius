@@ -103,6 +103,8 @@ const ListItem: React.FC<ListItemProps> = ({ title, subtitle, imageSrc }) => {
   return (
     <div className="border-b border-gray-300 p-4 flex">
       <Image
+        height="200"
+        width="200"
         className="h-20 w-20 object-cover mr-4"
         src={imageSrc}
         alt={title}
